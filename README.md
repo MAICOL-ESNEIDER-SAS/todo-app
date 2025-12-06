@@ -79,3 +79,7 @@ http://localhost:5173/
 -feat: manejo básico de errores en peticiones con try/catch
 
 -refactor: separación de lógica en componentes y limpieza
+
+-feat: actualizaciones
+
+-feat: agregar Navbar y navegación entre Home, Todos y Registro
