@@ -13,14 +13,14 @@ Esta es una aplicación de lista de tareas (Todos) desarrollada en React, que pe
 
 ---
 
-## 📂 Estructura del proyecto
+##  Estructura del proyecto
 
 - `src/pages/` → Contiene las páginas principales (`Home.jsx`, `Todos.jsx`, `Registro.jsx`)
 - `src/components/` → Contiene los componentes reutilizables (`TodoItem.jsx`, `TodoList.jsx`)
 
 ---
 
-## 🚀 Tecnologías utilizadas
+##  Tecnologías utilizadas
 - React (Vite)
 - React Router DOM
 - JavaScript
@@ -28,14 +28,14 @@ Esta es una aplicación de lista de tareas (Todos) desarrollada en React, que pe
 
 ---
 
-## 🔹 Rutas de la aplicación
+##  Rutas de la aplicación
 - `/` → Página principal (Home)  
 - `/todos` → Lista de todos con funcionalidades de marcar, eliminar y mostrar mensajes  
 - `/registro` → Formulario para crear nuevos todos con validación básica
 
 ---
 
-## 💻 Cómo ejecutar el proyecto
+##  Cómo ejecutar el proyecto
 
 ### 1. Clonar el repositorio:
 ```bash
