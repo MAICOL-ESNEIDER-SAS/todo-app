@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TodoList from "../components/TodoList";
 
 function Todos() {
   const [todos, setTodos] = useState([]);
@@ -12,9 +13,7 @@ function Todos() {
         const response = await fetch(
           "https://jsonplaceholder.typicode.com/todos?_limit=5"
         );
-        if (!response.ok) {
-          throw new Error("Error en la respuesta de la API");
-        }
+        if (!response.ok) throw new Error("Error en la respuesta de la API");
         const data = await response.json();
         setTodos(data);
         setLoading(false);
@@ -51,21 +50,11 @@ function Todos() {
     <div>
       <h1>Lista de Todos</h1>
       {message && <p style={{ color: "green" }}>{message}</p>}
-      {todos.length === 0 ? (
-        <p>No hay todos para mostrar</p>
-      ) : (
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id}>
-              {todo.title} - {todo.completed ? "✅" : "❌"}{" "}
-              <button onClick={() => toggleComplete(todo.id)}>
-                {todo.completed ? "Marcar pendiente" : "Marcar completo"}
-              </button>{" "}
-              <button onClick={() => deleteTodo(todo.id)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <TodoList
+        todos={todos}
+        onToggleComplete={toggleComplete}
+        onDelete={deleteTodo}
+      />
     </div>
   );
 }
