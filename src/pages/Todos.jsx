@@ -4,19 +4,28 @@ function Todos() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/todos?_limit=5"
+        );
+        if (!response.ok) {
+          throw new Error("Error en la respuesta de la API");
+        }
+        const data = await response.json();
         setTodos(data);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al cargar los todos:", error);
-        setMessage("Error al cargar los todos");
+      } catch (err) {
+        console.error(err);
+        setError("No se pudieron cargar los todos");
         setLoading(false);
-      });
+      }
+    };
+
+    fetchTodos();
   }, []);
 
   const toggleComplete = (id) => {
@@ -26,7 +35,7 @@ function Todos() {
       )
     );
     setMessage("Estado actualizado correctamente");
-    setTimeout(() => setMessage(""), 2000); // mensaje desaparece después de 2s
+    setTimeout(() => setMessage(""), 2000);
   };
 
   const deleteTodo = (id) => {
@@ -36,6 +45,7 @@ function Todos() {
   };
 
   if (loading) return <p>Cargando todos...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <div>
