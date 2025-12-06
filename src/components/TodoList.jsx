@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-function TodoList({ todos, onToggleComplete, onDelete }) {
+function TodoList({ todos, onToggleComplete, onDelete, onEdit }) {
   if (todos.length === 0) return <p>No hay todos para mostrar</p>;
 
   return (
@@ -12,6 +12,7 @@ function TodoList({ todos, onToggleComplete, onDelete }) {
           todo={todo}
           onToggleComplete={onToggleComplete}
           onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </ul>
@@ -19,4 +20,3 @@ function TodoList({ todos, onToggleComplete, onDelete }) {
 }
 
 export default TodoList;
-

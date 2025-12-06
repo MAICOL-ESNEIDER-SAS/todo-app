@@ -6,6 +6,7 @@ function Todos() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [filter, setFilter] = useState("all"); // all, completed, pending
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -27,6 +28,7 @@ function Todos() {
     fetchTodos();
   }, []);
 
+  // Funciones para acciones de los todos
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -43,6 +45,21 @@ function Todos() {
     setTimeout(() => setMessage(""), 2000);
   };
 
+  const editTodo = (id, newTitle) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, title: newTitle } : todo))
+    );
+    setMessage("Todo editado correctamente");
+    setTimeout(() => setMessage(""), 2000);
+  };
+
+  // Filtrar todos según selección
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "all") return true;
+    if (filter === "completed") return todo.completed;
+    if (filter === "pending") return !todo.completed;
+  });
+
   if (loading) return <p>Cargando todos...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
@@ -50,16 +67,26 @@ function Todos() {
     <div>
       <h1>Lista de Todos</h1>
       {message && <p style={{ color: "green" }}>{message}</p>}
+
+      {/* Botones de filtro */}
+      <div style={{ marginBottom: "10px" }}>
+        <button onClick={() => setFilter("all")}>Todos</button>{" "}
+        <button onClick={() => setFilter("completed")}>Completados</button>{" "}
+        <button onClick={() => setFilter("pending")}>Pendientes</button>
+      </div>
+
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         onToggleComplete={toggleComplete}
         onDelete={deleteTodo}
+        onEdit={editTodo}
       />
     </div>
   );
 }
 
 export default Todos;
+
 
 
 
