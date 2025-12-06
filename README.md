@@ -1,16 +1,81 @@
-# React + Vite
+# Todo App - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Esta es una aplicación de lista de tareas (Todos) desarrollada en React, que permite:
+- Navegar entre diferentes páginas
+- Crear nuevos todos
+- Listar todos existentes
+- Marcar todos como completado o pendiente
+- Eliminar todos
+- Validación básica de formularios
+- Manejo de estados de carga y mensajes
+- Manejo básico de errores en peticiones
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Estructura del proyecto
 
-## React Compiler
+- `src/pages/` → Contiene las páginas principales (`Home.jsx`, `Todos.jsx`, `Registro.jsx`)
+- `src/components/` → Contiene los componentes reutilizables (`TodoItem.jsx`, `TodoList.jsx`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías utilizadas
+- React (Vite)
+- React Router DOM
+- JavaScript
+- HTML / CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🔹 Rutas de la aplicación
+- `/` → Página principal (Home)  
+- `/todos` → Lista de todos con funcionalidades de marcar, eliminar y mostrar mensajes  
+- `/registro` → Formulario para crear nuevos todos con validación básica
+
+---
+
+## 💻 Cómo ejecutar el proyecto
+
+### 1. Clonar el repositorio:
+```bash
+git clone https://github.com/MAICOL-ESNEIDER-SAS/todo-app.git
+ 
+ Instalar dependencias:
+
+npm install
+
+
+Ejecutar la app:
+
+npm run dev
+```
+
+**Abrir en el navegador:**
+
+http://localhost:5173/
+
+## Video demostrativo
+
+**Enlace al video de la app funcionando**
+
+
+## Commits principales
+
+-feat: creación de estructura inicial con rutas /, /todos y /registro
+
+-feat: componente Todos.jsx con fetch inicial usando useEffect
+
+-feat: implementación de listado de todos desde API
+
+-feat: formulario para crear nuevos todos con validación básica
+
+-feat: función para marcar todos como completado o pendiente
+
+-feat: función para eliminar todos del listado
+
+-feat: estados de carga y mensajes de espera con useState
+
+-feat: manejo básico de errores en peticiones con try/catch
+
+-refactor: separación de lógica en componentes y limpieza
